@@ -1,0 +1,1 @@
+# @freeside-collective/firebase-common
