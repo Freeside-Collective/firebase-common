@@ -1,0 +1,22 @@
+{
+  "name": "@freeside-collective/firebase-common",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.js --format esm --dts",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "tsup": "^8",
+    "typescript": "^5.5",
+    "vitest": "^1.4"
+  },
+  "dependencies": {
+    "firebase": "^10.11.0",
+    "@freeside-collective/schema": "workspace:*"
+  }
+}
