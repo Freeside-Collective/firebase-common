@@ -1,0 +1,33 @@
+{
+  "name": "@freeside-collective/firebase-common",
+  "shortName": "firebase-common",
+  "description": "Shared Firebase initialization and authentication hooks",
+  "type": "package",
+  "boundedContext": "Firebase Shared",
+  "version": "0.1.0",
+  "language": "JavaScript",
+  "dependencies": [
+    "schema"
+  ],
+  "consumers": [
+    "game-client",
+    "admin-client"
+  ],
+  "firestoreCollections": {},
+  "exports": [
+    "initFirebase",
+    "useAuth",
+    "app",
+    "auth",
+    "db",
+    "storage",
+    "functions"
+  ],
+  "docs": {
+    "index": "docs/index.md",
+    "architecture": "docs/architecture.md",
+    "api": "docs/api.md",
+    "integration": "docs/integration.md",
+    "contributing": "docs/contributing.md"
+  }
+}
