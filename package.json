@@ -7,16 +7,18 @@
     ".": "./src/index.js"
   },
   "scripts": {
-    "build": "tsup src/index.js --format esm --dts",
+    "build": "tsup src/index.ts --format esm --dts",
     "test": "vitest run"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.2",
     "tsup": "^8",
     "typescript": "^5.5",
     "vitest": "^1.4"
   },
   "dependencies": {
-    "firebase": "^10.11.0",
-    "@freeside-collective/schema": "workspace:*"
+    "@freeside-collective/schema": "workspace:*",
+    "@tanstack/react-query": "^5.95.2",
+    "firebase": "^10.11.0"
   }
 }
