@@ -1,0 +1,30 @@
+{
+  "name": "@freeside-collective/firebase-common",
+  "shortName": "firebase-common",
+  "description": "Shared Firebase initialization and authentication utilities",
+  "type": "package",
+  "boundedContext": "Platform Infrastructure",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "dependencies": [
+    "@freeside-collective/schema"
+  ],
+  "consumers": [
+    "game-client",
+    "admin-client",
+    "platform-console"
+  ],
+  "firestoreCollections": {},
+  "exports": [
+    "initFirebase",
+    "observeAuth",
+    "useAuthQuery"
+  ],
+  "docs": {
+    "index": "docs/index.md",
+    "architecture": "docs/architecture.md",
+    "api": "docs/api.md",
+    "integration": "docs/integration.md",
+    "contributing": "docs/contributing.md"
+  }
+}
