@@ -26,16 +26,26 @@ export interface GraphQLConfig {
  * Default configuration using environment variables.
  *
  * Uses localhost in development, production URL otherwise.
+ * Configure via VITE_REALTIME_SERVER_URL (e.g., ws://localhost:4001/graphql)
  */
 function getDefaultConfig(): GraphQLConfig {
   const isDev = typeof window !== 'undefined' && window.location?.hostname === 'localhost';
+  const defaultPort = isDev ? '4001' : '443';
+  const defaultHost = isDev ? 'localhost' : 'realtime-server-production.run.app';
+  const defaultScheme = isDev ? 'http' : 'https';
+  const wsScheme = isDev ? 'ws' : 'wss';
+
+  const env = typeof globalThis !== 'undefined' ? (globalThis as Record<string, unknown>) : {};
+  const envUrl = env['VITE_REALTIME_SERVER_URL'] as string | undefined;
+
+  if (envUrl) {
+    const wsUrl = envUrl.replace(/^http/, 'ws');
+    return { httpUrl: envUrl, wsUrl };
+  }
+
   return {
-    httpUrl: isDev
-      ? 'http://localhost:4000/graphql'
-      : 'https://realtime-server-production.run.app/graphql',
-    wsUrl: isDev
-      ? 'ws://localhost:4000/graphql'
-      : 'wss://realtime-server-production.run.app/graphql',
+    httpUrl: `${defaultScheme}://${defaultHost}:${defaultPort}/graphql`,
+    wsUrl: `${wsScheme}://${defaultHost}:${defaultPort}/graphql`,
   };
 }
 
