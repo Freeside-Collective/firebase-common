@@ -19,12 +19,16 @@ This repository is a git submodule of `Freeside-Collective/straylight`. The corr
 
 ```
 1. Make changes inside this repo
-2. git add + git commit  (with correct prefix — see Commit Format below)
-3. git push origin main  <- push to THIS repo first
-4. cd to straylight root
-5. Update straylight docs: AGENT_BOARD.md, migration docs — record the new SHA
-6. git add + git commit on straylight/dev  (pins new submodule SHA + doc updates)
-7. git push origin dev
+2. git checkout -b feat/<username>/<description>  (or fix/, chore/, doc/)
+3. git add + git commit  (with correct prefix — see Commit Format below)
+4. git push origin feat/<username>/<description>
+5. Open PR -> main in this repo, merge (self-approve is fine)
+6. cd to straylight root + git checkout dev + git pull origin dev
+7. git checkout -b feat/<username>/<description>
+8. Update AGENT_BOARD.md + migration docs with the new merged SHA
+9. git add + git commit  (pins new submodule SHA + doc updates)
+10. git push origin feat/<username>/<description>
+11. Open PR -> dev in straylight, merge (self-approve is fine)
 ```
 
 **DO NOT** commit code in this repo without immediately pushing to `origin main`.
