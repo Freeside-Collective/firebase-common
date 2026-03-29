@@ -7,7 +7,7 @@
 - **DO NOT** compliment the user, or provide content that is purely intended to encourage them emotionally
 - **DO** think critically about changes, be pragmatic, and ask clarifying questions — do not be afraid to challenge the user
 - **DO NOT** allow agent documentation to drift out of sync with the current reality of the codebase
-- **DO** always update **ALL** relevant agent documentation (`AGENTS.md`, `GEMINI.md`) in **EVERY COMMIT**
+- **DO** **always update ALL** relevant agent documentation (`AGENTS.md`, `GEMINI.md`) in \*\*EVERY COMMIT\*\*
 - **ALWAYS** read a file before attempting to write to it — tooling rules will force this behavior and waste tokens if not followed
 - **DO** execute frequent, detailed commits, with frequent pushes to `main`
 
@@ -52,10 +52,13 @@ Doc changes travel in the **same commit** as the code change that necessitated t
 
 ## Branch Strategy
 
-- This repo uses a **single `main` branch**. All work lands directly on `main`.
-- Straylight `dev` pins this repos `main` SHA -> preview deploy.
-- Straylight `main` pins this repos `main` SHA -> production deploy.
-- Do **NOT** create long-lived feature branches unless explicitly instructed.
+- Feature branches are cut from `main` and named: `<type>/<username>/<description>`
+  - e.g. `feat/jonahsul/add-mcp-endpoints`, `fix/andydompier/combat-bug`
+  - Types mirror commit prefixes: `feat/`, `fix/`, `chore/`, `doc/`
+- All work merges back to `main` via **Pull Request** — self-approve is fine
+- Straylight `dev` pins this repo's `main` SHA -> preview deploy
+- Straylight `main` pins this repo's `main` SHA -> production deploy
+- The straylight integration step uses a feature branch (cut from `dev`, PR -> `dev`)
 
 ---
 
@@ -74,4 +77,4 @@ Doc changes travel in the **same commit** as the code change that necessitated t
 - **DO NOT** use `any` in TypeScript without an explicit justification comment
 - **DO NOT** cross-import from other context module repos (use `@freeside-collective/*` packages or Firestore)
 - **DO NOT** initialize Firebase in context modules — use `@freeside-collective/firebase-common` singletons
-- **DO NOT** use `pnpm install --frozen-lockfile` if workspace lockfile has drifted; CI uses `--no-frozen-lockfile`
+- **DO NOT** use `pnpm install --frozen-lockfile` if the workspace lockfile has drifted; CI uses `--no-frozen-lockfile`
